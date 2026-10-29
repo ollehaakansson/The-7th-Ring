@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwxot2kq2gwcu"
+path="res://.godot/imported/Lazarus Waves.mp3-9ee7dc83dae8540b161727a8f68514ee.mp3str"
+
+[deps]
+
+source_file="res://music/Lazarus Waves.mp3"
+dest_files=["res://.godot/imported/Lazarus Waves.mp3-9ee7dc83dae8540b161727a8f68514ee.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

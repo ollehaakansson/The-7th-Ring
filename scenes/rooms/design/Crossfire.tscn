@@ -1,0 +1,305 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="AudioStreamMP3" path="res://music/Bfg Division.mp3" id="room_music"]
+[ext_resource type="PackedScene" path="res://scenes/Room.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://scenes/Obstacle.tscn" id="2_obstacle"]
+[ext_resource type="PackedScene" path="res://scenes/River.tscn" id="3_river"]
+[ext_resource type="PackedScene" path="res://scenes/Bridge.tscn" id="4_bridge"]
+[ext_resource type="PackedScene" path="res://scenes/ExplosiveBarrel.tscn" id="5_barrel"]
+[ext_resource type="PackedScene" path="res://scenes/ArmorPickup.tscn" id="6_armor"]
+[ext_resource type="Script" path="res://src/SpawnPoint.cs" id="7_point"]
+[ext_resource type="PackedScene" path="res://scenes/Shooter.tscn" id="8_shooter"]
+[ext_resource type="PackedScene" path="res://scenes/Chaser.tscn" id="9_chaser"]
+[ext_resource type="PackedScene" path="res://scenes/HealthPickup.tscn" id="10_health"]
+[ext_resource type="PackedScene" path="res://scenes/Flanker.tscn" id="11_flanker"]
+
+[node name="Room" instance=ExtResource("1_base")]
+Music = ExtResource("room_music")
+MusicStartSeconds = 60.0
+
+[node name="WestPillar" parent="Obstacles" instance=ExtResource("2_obstacle")]
+position = Vector2(230, 180)
+Size = Vector2(36, 44)
+
+[node name="EastPillar" parent="Obstacles" instance=ExtResource("2_obstacle")]
+position = Vector2(450, 180)
+Size = Vector2(36, 44)
+
+[node name="NorthPillar" parent="Obstacles" instance=ExtResource("2_obstacle")]
+position = Vector2(170, 52)
+Size = Vector2(28, 32)
+
+[node name="SouthPillar" parent="Obstacles" instance=ExtResource("2_obstacle")]
+position = Vector2(470, 308)
+Size = Vector2(28, 32)
+
+[node name="NorthChannel" parent="." instance=ExtResource("3_river")]
+
+[node name="Path" parent="NorthChannel" index="5"]
+points = PackedVector2Array(180, 108, 260, 116, 390, 104, 520, 112, 660, 108)
+width = 36.0
+
+[node name="SouthChannel" parent="." instance=ExtResource("3_river")]
+
+[node name="Path" parent="SouthChannel" index="5"]
+points = PackedVector2Array(-20, 252, 120, 248, 250, 256, 380, 244, 460, 252)
+width = 36.0
+
+[node name="NorthBridge" parent="." instance=ExtResource("4_bridge")]
+position = Vector2(310, 110)
+rotation = 1.5707964
+Size = Vector2(100, 64)
+
+[node name="SouthBridge" parent="." instance=ExtResource("4_bridge")]
+position = Vector2(350, 250)
+rotation = 1.5707964
+Size = Vector2(100, 64)
+
+[node name="NorthBarrel" parent="." instance=ExtResource("5_barrel")]
+position = Vector2(500, 76)
+
+[node name="SouthBarrel" parent="." instance=ExtResource("5_barrel")]
+position = Vector2(155, 302)
+
+[node name="Armor" parent="." instance=ExtResource("6_armor")]
+position = Vector2(120, 180)
+
+[node name="EastHealth" parent="." instance=ExtResource("10_health")]
+position = Vector2(560, 150)
+
+[node name="EastArmor" parent="." instance=ExtResource("6_armor")]
+position = Vector2(580, 220)
+
+[node name="Wave1" type="Node2D" parent="Waves"]
+
+[node name="NorthShooter" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(560, 66)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="EastShooter" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(560, 180)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="SouthShooter" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(80, 304)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="CenterChaser" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(300, 175)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+
+[node name="CenterSouthChaser" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(350, 195)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+
+[node name="EastChaser" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(520, 220)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+
+[node name="WestChaser" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(120, 70)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+
+[node name="NorthChaser" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(390, 58)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+Delay = 0.4
+
+[node name="SouthChaser" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(255, 306)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+Delay = 0.8
+
+[node name="SouthEastChaser" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(570, 300)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+Delay = 1.2
+
+[node name="Wave2" type="Node2D" parent="Waves"]
+
+[node name="NorthShooter" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(550, 64)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="SouthShooter" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(80, 304)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="EastShooter" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(570, 180)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="CenterChaser" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(310, 180)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+
+[node name="CenterSouthChaser" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(370, 210)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+
+[node name="SouthEastFlanker" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(550, 300)
+script = ExtResource("7_point")
+Enemy = ExtResource("11_flanker")
+
+[node name="SouthWestChaser" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(210, 300)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+
+[node name="NorthEastFlanker" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(380, 58)
+script = ExtResource("7_point")
+Enemy = ExtResource("11_flanker")
+
+[node name="NorthBridgeChaser" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(310, 54)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+Delay = 0.4
+
+[node name="SouthBridgeChaser" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(350, 308)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+Delay = 0.8
+
+[node name="EastNorthChaser" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(540, 145)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+Delay = 1.2
+
+[node name="WestChaser" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(115, 70)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+Delay = 1.6
+
+[node name="NorthWestShooter" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(260, 54)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_shooter")
+Delay = 2.0
+
+[node name="EastSouthChaser" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(530, 215)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+Delay = 2.4
+
+[node name="CenterReinforcement" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(300, 205)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+Delay = 2.0
+
+[node name="SouthReinforcement" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(390, 300)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+Delay = 2.4
+
+[node name="Wave3" type="Node2D" parent="Waves"]
+
+[node name="EastShooter" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(570, 180)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="SouthShooter" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(80, 304)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="NorthShooter" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(550, 64)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="NorthWestShooter" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(260, 54)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="CenterFlanker" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(300, 174)
+script = ExtResource("7_point")
+Enemy = ExtResource("11_flanker")
+
+[node name="CenterSouthFlanker" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(350, 205)
+script = ExtResource("7_point")
+Enemy = ExtResource("11_flanker")
+
+[node name="NorthEastFlanker" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(390, 58)
+script = ExtResource("7_point")
+Enemy = ExtResource("11_flanker")
+
+[node name="SouthWestFlanker" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(255, 306)
+script = ExtResource("7_point")
+Enemy = ExtResource("11_flanker")
+
+[node name="SouthEastFlanker" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(550, 300)
+script = ExtResource("7_point")
+Enemy = ExtResource("11_flanker")
+
+[node name="WestFlanker" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(120, 70)
+script = ExtResource("7_point")
+Enemy = ExtResource("11_flanker")
+
+[node name="NorthBridgeFlanker" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(310, 52)
+script = ExtResource("7_point")
+Enemy = ExtResource("11_flanker")
+Delay = 0.4
+
+[node name="SouthBridgeChaser" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(350, 308)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+Delay = 0.8
+
+[node name="EastNorthFlanker" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(540, 145)
+script = ExtResource("7_point")
+Enemy = ExtResource("11_flanker")
+Delay = 1.2
+
+[node name="EastSouthChaser" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(535, 230)
+script = ExtResource("7_point")
+Enemy = ExtResource("9_chaser")
+Delay = 1.6
+
+[node name="WestHealth" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(110, 145)
+script = ExtResource("7_point")
+Pickup = ExtResource("10_health")
+
+[node name="WestArmor" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(150, 205)
+script = ExtResource("7_point")
+Pickup = ExtResource("6_armor")
+
+[editable path="NorthChannel"]
+[editable path="SouthChannel"]

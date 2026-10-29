@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1s0uhdet77yy"
+path="res://.godot/imported/Authorization; Olivia Pierce.mp3-14f5182bb5ece4840718756e7d159714.mp3str"
+
+[deps]
+
+source_file="res://music/Authorization; Olivia Pierce.mp3"
+dest_files=["res://.godot/imported/Authorization; Olivia Pierce.mp3-14f5182bb5ece4840718756e7d159714.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

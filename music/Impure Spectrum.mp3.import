@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://h4unabcalji5"
+path="res://.godot/imported/Impure Spectrum.mp3-b807e31d6eb99208d59aecbf296de1af.mp3str"
+
+[deps]
+
+source_file="res://music/Impure Spectrum.mp3"
+dest_files=["res://.godot/imported/Impure Spectrum.mp3-b807e31d6eb99208d59aecbf296de1af.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

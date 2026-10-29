@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Hazard.tscn" id="1_hazard"]
+[ext_resource type="Texture2D" path="res://assets/sprites/freedoom/lava1.png" id="2_tex"]
+
+[node name="RainOfFire" instance=ExtResource("1_hazard")]
+Damage = 2
+Periodic = true
+RestSeconds = 2.5
+TelegraphSeconds = 0.7
+ActiveSeconds = 1.2
+DamageInterval = 0.4
+RestColour = Color(0.18, 0.08, 0.03, 0.2)
+TelegraphColour = Color(1, 0.55, 0.12, 0.55)
+ActiveColour = Color(1, 0.18, 0.02, 0.9)
+
+[node name="Visual" parent="." index="0"]
+texture_repeat = 2
+texture = ExtResource("2_tex")

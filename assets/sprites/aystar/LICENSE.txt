@@ -1,0 +1,4 @@
+Source: Free 16x16 Pixel Art Guns & Weapons Pack by AystarGames
+https://aystargames.itch.io/16x16-micro-pixel-art-gun-pack
+License: CC0, as stated on the author's asset page (accessed 2026-10-09).
+Selected sprites cropped; yellow weapon outlines mapped to steel gray; recolored with scripts/recolor.py to the project Doom palette.

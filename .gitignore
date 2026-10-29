@@ -1,0 +1,41 @@
+# Godot 4+ specific ignores
+.godot/
+.nomedia
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+*.tmp
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+/tools/
+
+# C# build output
+.godot/
+bin/
+obj/
+*.user
+*.userprefs
+*.suo
+*.swp
+
+*.sln.DotSettings.user
+
+# Export output
+/build/
+/export/
+
+# Editor noise
+.vs/
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db

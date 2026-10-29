@@ -1,0 +1,284 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="AudioStreamMP3" path="res://music/Flesh & Metal.mp3" id="room_music"]
+[ext_resource type="PackedScene" path="res://scenes/Room.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://scenes/River.tscn" id="2_blood"]
+[ext_resource type="PackedScene" path="res://scenes/Bridge.tscn" id="4_bridge"]
+[ext_resource type="PackedScene" path="res://scenes/ShotgunPickup.tscn" id="5_shotgun"]
+[ext_resource type="PackedScene" path="res://scenes/AmbushTrigger.tscn" id="6_ambush"]
+[ext_resource type="Script" path="res://src/SpawnPoint.cs" id="7_point"]
+[ext_resource type="PackedScene" path="res://scenes/Chaser.tscn" id="8_chaser"]
+[ext_resource type="PackedScene" path="res://scenes/ExplosiveBarrel.tscn" id="9_barrel"]
+[ext_resource type="PackedScene" path="res://scenes/Obstacle.tscn" id="10_obstacle"]
+[ext_resource type="Script" path="res://src/GeyserCycle.cs" id="11_cycle"]
+[ext_resource type="PackedScene" path="res://scenes/Geyser.tscn" id="12_geyser"]
+
+[ext_resource type="PackedScene" path="res://scenes/HealthPickup.tscn" id="extra_health"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_geyser"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grab"]
+size = Vector2(80, 60)
+
+[node name="Room" instance=ExtResource("1_base")]
+Music = ExtResource("room_music")
+MusicStartSeconds = 171.0
+WavesWaitForAmbush = true
+
+[node name="DrumWest" parent="Obstacles" instance=ExtResource("10_obstacle")]
+position = Vector2(110, 120)
+Size = Vector2(28, 28)
+
+[node name="DrumEast" parent="Obstacles" instance=ExtResource("10_obstacle")]
+position = Vector2(540, 245)
+Size = Vector2(28, 36)
+
+[node name="BloodRiverNorthWest" parent="." instance=ExtResource("2_blood")]
+
+[node name="Path" parent="BloodRiverNorthWest" index="5"]
+points = PackedVector2Array(-20, -10, 150, 80, 320, 180, 490, 282, 660, 370)
+width = 64.0
+
+[node name="BloodRiverNorthEast" parent="." instance=ExtResource("2_blood")]
+
+[node name="Path" parent="BloodRiverNorthEast" index="5"]
+points = PackedVector2Array(660, -10, 490, 80, 320, 180, 150, 280, -20, 370)
+width = 64.0
+
+[node name="Platform" parent="." instance=ExtResource("4_bridge")]
+position = Vector2(320, 180)
+Size = Vector2(220, 104)
+RailWidth = 0.0
+
+[node name="Necks" type="Node2D" parent="."]
+script = ExtResource("11_cycle")
+
+[node name="GeyserWest" parent="Necks" instance=ExtResource("12_geyser")]
+position = Vector2(210, 180)
+Manual = true
+ActiveSeconds = 2.5
+
+[node name="CollisionShape2D" parent="Necks/GeyserWest" index="1"]
+shape = SubResource("CircleShape2D_geyser")
+
+[node name="Pool" parent="Necks/GeyserWest" index="2"]
+Round = true
+Fill = 0.6
+HideAtRest = true
+
+[node name="Art" parent="Necks/GeyserWest" index="3"]
+Violent = true
+
+[node name="GeyserEast" parent="Necks" instance=ExtResource("12_geyser")]
+position = Vector2(430, 180)
+Manual = true
+ActiveSeconds = 2.5
+
+[node name="CollisionShape2D" parent="Necks/GeyserEast" index="1"]
+shape = SubResource("CircleShape2D_geyser")
+
+[node name="Pool" parent="Necks/GeyserEast" index="2"]
+Round = true
+Fill = 0.6
+HideAtRest = true
+
+[node name="Art" parent="Necks/GeyserEast" index="3"]
+Violent = true
+
+[node name="GeyserNorth" parent="Necks" instance=ExtResource("12_geyser")]
+position = Vector2(320, 128)
+Manual = true
+ActiveSeconds = 2.5
+
+[node name="CollisionShape2D" parent="Necks/GeyserNorth" index="1"]
+shape = SubResource("CircleShape2D_geyser")
+
+[node name="Pool" parent="Necks/GeyserNorth" index="2"]
+Round = true
+Fill = 0.6
+HideAtRest = true
+
+[node name="Art" parent="Necks/GeyserNorth" index="3"]
+Violent = true
+
+[node name="GeyserSouth" parent="Necks" instance=ExtResource("12_geyser")]
+position = Vector2(320, 232)
+Manual = true
+ActiveSeconds = 2.5
+
+[node name="CollisionShape2D" parent="Necks/GeyserSouth" index="1"]
+shape = SubResource("CircleShape2D_geyser")
+
+[node name="Pool" parent="Necks/GeyserSouth" index="2"]
+Round = true
+Fill = 0.6
+HideAtRest = true
+
+[node name="Art" parent="Necks/GeyserSouth" index="3"]
+Violent = true
+
+[node name="Shotgun" parent="." instance=ExtResource("5_shotgun")]
+position = Vector2(320, 180)
+
+[node name="BarrelNorth" parent="." instance=ExtResource("9_barrel")]
+position = Vector2(250, 78)
+
+[node name="BarrelSouth" parent="." instance=ExtResource("9_barrel")]
+position = Vector2(390, 282)
+
+[node name="BarrelEast" parent="." instance=ExtResource("9_barrel")]
+position = Vector2(520, 180)
+
+[node name="AmbushTrigger" parent="." instance=ExtResource("6_ambush")]
+position = Vector2(320, 180)
+FloodsBridges = false
+
+[node name="CollisionShape2D" parent="AmbushTrigger" index="0"]
+shape = SubResource("RectangleShape2D_grab")
+
+[node name="Wave1" type="Node2D" parent="Waves"]
+
+[node name="Chaser1" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(220, 40)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 0.2
+
+[node name="Chaser2" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(420, 40)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 0.5
+
+[node name="Chaser3" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(320, 62)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 0.8
+
+[node name="Chaser4" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(220, 320)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 1.0
+
+[node name="Chaser5" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(420, 320)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 1.3
+
+[node name="Chaser6" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(320, 298)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 1.6
+
+[node name="Chaser7" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(585, 120)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 2.2
+
+[node name="Chaser8" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(585, 240)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 2.6
+
+[node name="Wave2" type="Node2D" parent="Waves"]
+
+[node name="Chaser1" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(60, 140)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+
+[node name="Chaser2" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(60, 220)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 0.3
+
+[node name="Chaser3" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(150, 180)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 0.6
+
+[node name="Chaser4" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(320, 50)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 1.2
+
+[node name="Chaser5" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(320, 310)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 1.5
+
+[node name="Wave3" type="Node2D" parent="Waves"]
+
+[node name="Chaser1" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(220, 40)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+
+[node name="Chaser2" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(420, 40)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 0.3
+
+[node name="Chaser3" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(320, 62)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 0.6
+
+[node name="Chaser4" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(220, 320)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 0.9
+
+[node name="Chaser5" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(420, 320)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 1.2
+
+[node name="Chaser6" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(320, 298)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 1.5
+
+[node name="Chaser7" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(585, 120)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 1.8
+
+[node name="Chaser8" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(585, 240)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 2.1
+
+[node name="Chaser9" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(60, 140)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 2.4
+
+[node name="Chaser10" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(60, 220)
+script = ExtResource("7_point")
+Enemy = ExtResource("8_chaser")
+Delay = 2.7
+
+
+[node name="PlatformHealth" parent="." instance=ExtResource("extra_health")]
+position = Vector2(350, 180)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2w0hkthqfbt0"
+path="res://.godot/imported/Dr. Samuel Hayden.mp3-00ac7fd1c7872b6f9dc5d8ee1fcf8471.mp3str"
+
+[deps]
+
+source_file="res://music/Dr. Samuel Hayden.mp3"
+dest_files=["res://.godot/imported/Dr. Samuel Hayden.mp3-00ac7fd1c7872b6f9dc5d8ee1fcf8471.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

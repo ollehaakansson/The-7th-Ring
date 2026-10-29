@@ -1,0 +1,175 @@
+[gd_scene load_steps=19 format=3]
+
+[ext_resource type="AudioStreamMP3" path="res://music/Rip & Tear.mp3" id="room_music"]
+[ext_resource type="PackedScene" path="res://scenes/Room.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://scenes/Boss.tscn" id="2_boss"]
+[ext_resource type="PackedScene" path="res://scenes/Obstacle.tscn" id="3_cover"]
+[ext_resource type="PackedScene" path="res://scenes/preview/FirePit.tscn" id="4_fire"]
+[ext_resource type="PackedScene" path="res://scenes/Flanker.tscn" id="5_flanker"]
+[ext_resource type="PackedScene" path="res://scenes/BazookaPickup.tscn" id="6_bazooka"]
+[ext_resource type="PackedScene" path="res://scenes/HealthPickup.tscn" id="7_health"]
+[ext_resource type="PackedScene" path="res://scenes/ArmorPickup.tscn" id="8_armor"]
+[ext_resource type="Script" path="res://src/BossArena.cs" id="9_arena"]
+[ext_resource type="Script" path="res://src/SpawnPoint.cs" id="10_point"]
+[ext_resource type="PackedScene" path="res://scenes/Chaser.tscn" id="11_chaser"]
+[ext_resource type="PackedScene" path="res://scenes/Shooter.tscn" id="12_shooter"]
+[ext_resource type="PackedScene" path="res://scenes/Charger.tscn" id="13_charger"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gate"]
+size = Vector2(64, 328)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal_fire"]
+size = Vector2(640, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical_fire"]
+size = Vector2(112, 200)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_health"]
+bg_color = Color(0.75, 0.06, 0.08, 1)
+
+[node name="Room" instance=ExtResource("1_base")]
+Music = ExtResource("room_music")
+WavesWaitForAmbush = true
+
+[node name="Floor" parent="." index="0"]
+color = Color(0.85, 0.72, 0.68, 1)
+
+[node name="NorthPillar" parent="Obstacles" instance=ExtResource("3_cover")]
+position = Vector2(235, 130)
+Size = Vector2(28, 28)
+
+[node name="SouthPillar" parent="Obstacles" instance=ExtResource("3_cover")]
+position = Vector2(405, 230)
+Size = Vector2(28, 28)
+
+[node name="Boss" parent="Enemies" instance=ExtResource("2_boss")]
+collision_mask = 1
+process_mode = 4
+disable_mode = 1
+position = Vector2(450, 180)
+AddScene = ExtResource("5_flanker")
+AddScenes = Array[PackedScene]([ExtResource("5_flanker"), ExtResource("5_flanker"), ExtResource("12_shooter"), ExtResource("5_flanker"), ExtResource("11_chaser"), ExtResource("5_flanker"), ExtResource("13_charger"), ExtResource("5_flanker")])
+MaxAdds = 16
+SummonCooldown = 6.0
+AddsPerSummon = 4
+RestSeconds = 0.4
+WindUpSeconds = 0.4
+VolleyShots = 9
+VolleySpreadDegrees = 64.0
+ChargeSpeed = 260.0
+MaxChargeSeconds = 1.6
+DazedSeconds = 0.5
+
+[node name="HealthComponent" parent="Enemies/Boss" index="3"]
+MaxHealth = 120
+
+[node name="FireRing" type="Node2D" parent="."]
+
+[node name="NorthFire" parent="FireRing" instance=ExtResource("4_fire")]
+collision_mask = 2
+position = Vector2(320, 48)
+Damage = 1
+DamageInterval = 0.55
+Manual = true
+TelegraphSeconds = 1.4
+ActiveSeconds = 3600.0
+
+[node name="CollisionShape2D" parent="FireRing/NorthFire" index="1"]
+shape = SubResource("RectangleShape2D_horizontal_fire")
+
+[node name="SouthFire" parent="FireRing" instance=ExtResource("4_fire")]
+collision_mask = 2
+position = Vector2(320, 312)
+Damage = 1
+DamageInterval = 0.55
+Manual = true
+TelegraphSeconds = 1.4
+ActiveSeconds = 3600.0
+
+[node name="CollisionShape2D" parent="FireRing/SouthFire" index="1"]
+shape = SubResource("RectangleShape2D_horizontal_fire")
+
+[node name="WestFire" parent="FireRing" instance=ExtResource("4_fire")]
+collision_mask = 2
+position = Vector2(72, 180)
+Damage = 1
+DamageInterval = 0.55
+Manual = true
+TelegraphSeconds = 1.4
+ActiveSeconds = 3600.0
+
+[node name="CollisionShape2D" parent="FireRing/WestFire" index="1"]
+shape = SubResource("RectangleShape2D_vertical_fire")
+
+[node name="EastFire" parent="FireRing" instance=ExtResource("4_fire")]
+collision_mask = 2
+position = Vector2(568, 180)
+Damage = 1
+DamageInterval = 0.55
+Manual = true
+TelegraphSeconds = 1.4
+ActiveSeconds = 3600.0
+
+[node name="CollisionShape2D" parent="FireRing/EastFire" index="1"]
+shape = SubResource("RectangleShape2D_vertical_fire")
+
+[node name="NorthHealth" parent="." instance=ExtResource("7_health")]
+position = Vector2(70, 110)
+
+[node name="SouthHealth" parent="." instance=ExtResource("7_health")]
+position = Vector2(70, 250)
+
+[node name="EntryArmor" parent="." instance=ExtResource("8_armor")]
+position = Vector2(75, 180)
+
+[node name="Bazooka" parent="." instance=ExtResource("6_bazooka")]
+position = Vector2(100, 285)
+
+[node name="PhaseSupplies" type="Node2D" parent="."]
+
+[node name="Health" type="Marker2D" parent="PhaseSupplies"]
+position = Vector2(180, 230)
+script = ExtResource("10_point")
+Pickup = ExtResource("7_health")
+
+[node name="Armor" type="Marker2D" parent="PhaseSupplies"]
+position = Vector2(460, 120)
+script = ExtResource("10_point")
+Pickup = ExtResource("8_armor")
+
+[node name="Arena" type="Area2D" parent="."]
+position = Vector2(140, 180)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_arena")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena"]
+shape = SubResource("RectangleShape2D_gate")
+
+[node name="BossUI" type="CanvasLayer" parent="."]
+
+[node name="Name" type="Label" parent="BossUI"]
+offset_left = 200.0
+offset_top = 2.0
+offset_right = 440.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 12
+text = "GERYON"
+horizontal_alignment = 1
+
+[node name="Health" type="ProgressBar" parent="BossUI"]
+offset_left = 200.0
+offset_top = 18.0
+offset_right = 440.0
+offset_bottom = 26.0
+mouse_filter = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_health")
+max_value = 120.0
+value = 120.0
+show_percentage = false
+
+[editable path="Enemies/Boss"]
+[editable path="FireRing/NorthFire"]
+[editable path="FireRing/SouthFire"]
+[editable path="FireRing/WestFire"]
+[editable path="FireRing/EastFire"]

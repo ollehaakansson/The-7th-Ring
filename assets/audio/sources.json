@@ -1,0 +1,128 @@
+[
+  {
+    "cue": "pistol",
+    "source": "Prepared SFX Library/1911/A_34P.wav",
+    "pack": "Free Firearm Sound Library"
+  },
+  {
+    "cue": "shotgun",
+    "source": "Prepared SFX Library/Mossberg/N_26P.wav",
+    "pack": "Free Firearm Sound Library",
+    "processing": "Pitched down 10%, bass EQ and transient compression; layered with low-passed bossdeath.wav and delayed reload.wav. Peak -1.5 dBFS."
+  },
+  {
+    "cue": "rocket",
+    "source": "02_combat_ranged/ZapLauncher_01_s01.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "explosion",
+    "source": "03_explosions_destruction/explosion_crunch_003_48kHz_16bit_1.55s_4b973e9c_s04.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "reload",
+    "source": "ShotgunSounds/Rack.mp3",
+    "pack": "zer0_sol - Shotgun Reload Sound Effects"
+  },
+  {
+    "cue": "switch",
+    "source": "01_combat_melee/draw_knife1_48kHz_16bit_0.4s_12000eb6_s03.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "impact",
+    "source": "01_combat_melee/SmallImpact_01_s01.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "enemyhit",
+    "source": "01_combat_melee/slime_000_48kHz_16bit_0.5s_691d3d6e_s04.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "enemydeath",
+    "source": "01_combat_melee/impact_punch_heavy_003_48kHz_16bit_0.47s_2546df80_s02.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "playerhit",
+    "source": "01_combat_melee/impact_punch_heavy_000_48kHz_16bit_0.65s_8fb58ba7_s02.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "playerdeath",
+    "source": "03_explosions_destruction/Retro Explosion Long 02_s05.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "armorhit",
+    "source": "01_combat_melee/Impact_02_s01.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "health",
+    "source": "04_magic_spells/Healing Spell Impact 1_s08.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "armor",
+    "source": "04_magic_spells/Healing Spell Impact 3_s08.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "weapon",
+    "source": "04_magic_spells/EnergyZap_s01.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "dodge",
+    "source": "04_magic_spells/Wind Spell Impact 1_s07.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "enemyshot",
+    "source": "02_combat_ranged/Laser Pistol 1_s09.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "charge",
+    "source": "04_magic_spells/Retro Charge Magic 11_s05.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "bossvolley",
+    "source": "04_magic_spells/HeavyZap_s01.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "summon",
+    "source": "04_magic_spells/Retro Charge Off StereoUP 02_s05.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "enrage",
+    "source": "04_magic_spells/PowerZap_01_s01.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "bossdeath",
+    "source": "03_explosions_destruction/low_frequency_explosion_000_48kHz_16bit_2s_84586419_s04.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "clear",
+    "source": "04_magic_spells/Healing Spell Impact 10_s08.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "fire",
+    "source": "04_magic_spells/Fire Spell Impact 1_s06.wav",
+    "pack": "150 Combat Sound Effects"
+  },
+  {
+    "cue": "victory",
+    "source": "04_magic_spells/Healing Spell Impact 15_s08.wav",
+    "pack": "150 Combat Sound Effects"
+  }
+]

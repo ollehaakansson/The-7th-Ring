@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dnwjhrrqqon2i"
+path="res://.godot/imported/Transistor Fist.mp3-3db8b58d842c83f66fe231e8a23618ea.mp3str"
+
+[deps]
+
+source_file="res://music/Transistor Fist.mp3"
+dest_files=["res://.godot/imported/Transistor Fist.mp3-3db8b58d842c83f66fe231e8a23618ea.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

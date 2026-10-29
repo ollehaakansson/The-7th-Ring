@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhqsp084r4kem"
+path="res://.godot/imported/Flesh & Metal.mp3-89952d9d717b159ee5facef580cba7b3.mp3str"
+
+[deps]
+
+source_file="res://music/Flesh & Metal.mp3"
+dest_files=["res://.godot/imported/Flesh & Metal.mp3-89952d9d717b159ee5facef580cba7b3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dmi3ctj4c6ck3"]
+
+[ext_resource type="PackedScene" path="res://scenes/Room.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://scenes/Shooter.tscn" id="2_shooter"]
+[ext_resource type="PackedScene" path="res://scenes/Obstacle.tscn" id="3_obstacle"]
+[ext_resource type="PackedScene" path="res://scenes/preview/FirePit.tscn" id="4_fire"]
+[ext_resource type="PackedScene" path="res://scenes/ExplosiveBarrel.tscn" id="5_barrel"]
+[ext_resource type="PackedScene" path="res://scenes/ArmorPickup.tscn" id="6_armor"]
+
+[node name="Room" unique_id=1669506292 instance=ExtResource("1_base")]
+
+[node name="NorthCover" parent="Obstacles" index="0" unique_id=2134986359 instance=ExtResource("3_obstacle")]
+position = Vector2(280, 75)
+Size = Vector2(220, 24)
+
+[node name="SouthCover" parent="Obstacles" index="1" unique_id=588601594 instance=ExtResource("3_obstacle")]
+position = Vector2(380, 285)
+Size = Vector2(220, 24)
+
+[node name="CenterCover" parent="Obstacles" index="2" unique_id=1565324363 instance=ExtResource("3_obstacle")]
+position = Vector2(265, 180)
+Size = Vector2(44, 52)
+
+[node name="EastCover" parent="Obstacles" index="3" unique_id=642581859 instance=ExtResource("3_obstacle")]
+position = Vector2(465, 180)
+Size = Vector2(36, 36)
+
+[node name="Shooter1" parent="Enemies" index="0" unique_id=1316695420 instance=ExtResource("2_shooter")]
+position = Vector2(535, 55)
+
+[node name="Shooter2" parent="Enemies" index="1" unique_id=865024668 instance=ExtResource("2_shooter")]
+position = Vector2(555, 125)
+
+[node name="Shooter3" parent="Enemies" index="2" unique_id=701000051 instance=ExtResource("2_shooter")]
+position = Vector2(500, 235)
+
+[node name="Shooter4" parent="Enemies" index="3" unique_id=773322580 instance=ExtResource("2_shooter")]
+position = Vector2(558, 276)
+
+[node name="Shooter5" parent="Enemies" index="4" unique_id=1496128044 instance=ExtResource("2_shooter")]
+position = Vector2(420, 180)
+
+[node name="RainOfFire" parent="." index="7" unique_id=9490079 instance=ExtResource("4_fire")]
+position = Vector2(155, 45)
+scale = Vector2(2, 0.6)
+
+[node name="SouthFire" parent="." index="8" unique_id=197209663 instance=ExtResource("4_fire")]
+position = Vector2(505, 315)
+scale = Vector2(2, 0.6)
+
+[node name="ExplosiveBarrel" parent="." index="9" unique_id=2080945232 instance=ExtResource("5_barrel")]
+position = Vector2(350, 180)
+
+[node name="ArmorPickup" parent="." index="10" unique_id=1852080093 instance=ExtResource("6_armor")]
+position = Vector2(120, 115)

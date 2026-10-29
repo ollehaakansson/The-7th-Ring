@@ -1,0 +1,21 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/RainOfFire.tscn" id="1_fire"]
+[ext_resource type="Script" path="res://src/BurstArt.cs" id="2_art"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fire/flame_big_f0.png" id="b0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fire/flame_big_f1.png" id="b1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fire/flame_big_f2.png" id="b2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fire/flame_big_f3.png" id="b3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fire/flame_small_f0.png" id="s0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fire/flame_small_f1.png" id="s1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fire/flame_small_f2.png" id="s2"]
+
+[node name="FirePit" instance=ExtResource("1_fire")]
+
+[node name="Visual" parent="." index="0"]
+visible = false
+
+[node name="Art" type="Node2D" parent="."]
+script = ExtResource("2_art")
+Big = Array[Texture2D]([ExtResource("b0"), ExtResource("b1"), ExtResource("b2"), ExtResource("b3")])
+Small = Array[Texture2D]([ExtResource("s0"), ExtResource("s1"), ExtResource("s2")])

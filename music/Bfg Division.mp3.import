@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dkgqu4pi0urxv"
+path="res://.godot/imported/Bfg Division.mp3-f081a5b35b503a736f558477a1a9c202.mp3str"
+
+[deps]
+
+source_file="res://music/Bfg Division.mp3"
+dest_files=["res://.godot/imported/Bfg Division.mp3-f081a5b35b503a736f558477a1a9c202.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

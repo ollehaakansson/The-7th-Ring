@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://src/Shooter.cs" id="1_shooter"]
+[ext_resource type="Script" path="res://src/HealthComponent.cs" id="2_health"]
+[ext_resource type="PackedScene" path="res://scenes/EnemyBullet.tscn" id="3_bullet"]
+[ext_resource type="SpriteFrames" path="res://assets/sprites/0x72/chort.tres" id="9_frames"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shooter"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(28, 46)
+
+[node name="Shooter" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_shooter")
+BulletScene = ExtResource("3_bullet")
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("9_frames")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -7.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shooter")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_health")
+MaxHealth = 2
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, -15)
+collision_layer = 128
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_hurt")

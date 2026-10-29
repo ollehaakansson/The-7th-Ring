@@ -1,0 +1,310 @@
+[gd_scene load_steps=16 format=3]
+
+[ext_resource type="AudioStreamMP3" path="res://music/Harbinger.mp3" id="room_music"]
+[ext_resource type="PackedScene" path="res://scenes/Room.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://scenes/Obstacle.tscn" id="2_obstacle"]
+[ext_resource type="PackedScene" path="res://scenes/River.tscn" id="3_blood"]
+[ext_resource type="PackedScene" path="res://scenes/Bridge.tscn" id="4_bridge"]
+[ext_resource type="Script" path="res://src/SpawnPoint.cs" id="5_point"]
+[ext_resource type="PackedScene" path="res://scenes/Charger.tscn" id="6_charger"]
+[ext_resource type="PackedScene" path="res://scenes/Flanker.tscn" id="7_flanker"]
+[ext_resource type="PackedScene" path="res://scenes/Shooter.tscn" id="8_shooter"]
+[ext_resource type="PackedScene" path="res://scenes/Chaser.tscn" id="9_chaser"]
+[ext_resource type="PackedScene" path="res://scenes/BazookaPickup.tscn" id="10_bazooka"]
+[ext_resource type="PackedScene" path="res://scenes/HealthPickup.tscn" id="11_health"]
+[ext_resource type="PackedScene" path="res://scenes/ArmorPickup.tscn" id="12_armor"]
+[ext_resource type="Script" path="res://src/FurnaceTides.cs" id="13_tides"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_start"]
+size = Vector2(80, 200)
+
+[node name="Room" instance=ExtResource("1_base")]
+Music = ExtResource("room_music")
+MusicStartSeconds = 80.0
+WavesWaitForAmbush = true
+
+[node name="WestChannel" parent="." instance=ExtResource("3_blood")]
+
+[node name="Path" parent="WestChannel" index="5"]
+points = PackedVector2Array(290, -80, 290, 440)
+width = 100.0
+
+[node name="EastChannel" parent="." instance=ExtResource("3_blood")]
+
+[node name="Path" parent="EastChannel" index="5"]
+points = PackedVector2Array(280, 180, 720, 180)
+width = 48.0
+
+[node name="WestBankTop" parent="." instance=ExtResource("3_blood")]
+
+[node name="Path" parent="WestBankTop" index="5"]
+points = PackedVector2Array(-80, 16, 290, 16)
+width = 88.0
+
+[node name="EastBankTop" parent="." instance=ExtResource("3_blood")]
+
+[node name="Path" parent="EastBankTop" index="5"]
+points = PackedVector2Array(280, 16, 720, 16)
+width = 32.0
+
+[node name="WestBankBottom" parent="." instance=ExtResource("3_blood")]
+
+[node name="Path" parent="WestBankBottom" index="5"]
+points = PackedVector2Array(-80, 344, 290, 344)
+width = 88.0
+
+[node name="EastBankBottom" parent="." instance=ExtResource("3_blood")]
+
+[node name="Path" parent="EastBankBottom" index="5"]
+points = PackedVector2Array(280, 344, 720, 344)
+width = 32.0
+
+[node name="WestBank" parent="." instance=ExtResource("3_blood")]
+
+[node name="Path" parent="WestBank" index="5"]
+points = PackedVector2Array(16, -80, 16, 440)
+width = 48.0
+
+[node name="EastBank" parent="." instance=ExtResource("3_blood")]
+
+[node name="Path" parent="EastBank" index="5"]
+points = PackedVector2Array(616, -80, 616, 440)
+width = 72.0
+
+[node name="WestPlatform" parent="." instance=ExtResource("4_bridge")]
+position = Vector2(140, 180)
+Size = Vector2(200, 240)
+RailWidth = 0.0
+DeckTint = Color(1.15, 1.0, 0.9, 1)
+
+[node name="NorthPlatform" parent="." instance=ExtResource("4_bridge")]
+position = Vector2(460, 94)
+Size = Vector2(240, 124)
+RailWidth = 0.0
+DeckTint = Color(1.15, 1.0, 0.9, 1)
+
+[node name="SouthPlatform" parent="." instance=ExtResource("4_bridge")]
+position = Vector2(460, 266)
+Size = Vector2(240, 124)
+RailWidth = 0.0
+DeckTint = Color(1.15, 1.0, 0.9, 1)
+
+[node name="NorthCrossing" parent="." instance=ExtResource("4_bridge")]
+position = Vector2(290, 100)
+Size = Vector2(140, 64)
+
+[node name="SouthCrossing" parent="." instance=ExtResource("4_bridge")]
+position = Vector2(290, 260)
+Size = Vector2(140, 64)
+
+[node name="EastCrossing" parent="." instance=ExtResource("4_bridge")]
+position = Vector2(460, 180)
+rotation = 1.5707964
+Size = Vector2(112, 80)
+
+[node name="ExitCauseway" parent="." instance=ExtResource("4_bridge")]
+position = Vector2(566, 180)
+Size = Vector2(208, 64)
+
+[node name="WestAltar" parent="Obstacles" instance=ExtResource("2_obstacle")]
+position = Vector2(140, 180)
+Size = Vector2(32, 40)
+
+[node name="NorthAltar" parent="Obstacles" instance=ExtResource("2_obstacle")]
+position = Vector2(435, 94)
+Size = Vector2(28, 28)
+
+[node name="SouthAltar" parent="Obstacles" instance=ExtResource("2_obstacle")]
+position = Vector2(490, 266)
+Size = Vector2(28, 28)
+
+[node name="Bazooka" parent="." instance=ExtResource("10_bazooka")]
+position = Vector2(515, 100)
+
+[node name="EntryArmor" parent="." instance=ExtResource("12_armor")]
+position = Vector2(90, 110)
+
+[node name="EastHealth" parent="." instance=ExtResource("11_health")]
+position = Vector2(550, 285)
+
+[node name="Tides" type="Area2D" parent="."]
+position = Vector2(170, 180)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("13_tides")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tides"]
+shape = SubResource("RectangleShape2D_start")
+
+[node name="Wave1" type="Node2D" parent="Waves"]
+
+[node name="NorthCharger" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(535, 110)
+script = ExtResource("5_point")
+Enemy = ExtResource("6_charger")
+
+[node name="SouthCharger" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(400, 270)
+script = ExtResource("5_point")
+Enemy = ExtResource("6_charger")
+
+[node name="NorthFlanker" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(375, 60)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+
+[node name="SouthFlanker" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(550, 230)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+
+[node name="WestFlanker" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(90, 270)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+
+[node name="EastFlanker" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(550, 55)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+
+[node name="NorthShooter" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(410, 140)
+script = ExtResource("5_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="SouthShooter" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(365, 310)
+script = ExtResource("5_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="NorthReinforcement" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(375, 130)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+Delay = 0.4
+
+[node name="SouthReinforcement" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(440, 310)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+Delay = 0.8
+
+[node name="EastNorthShooter" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(470, 55)
+script = ExtResource("5_point")
+Enemy = ExtResource("8_shooter")
+Delay = 1.2
+
+[node name="EastSouthShooter" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(550, 310)
+script = ExtResource("5_point")
+Enemy = ExtResource("8_shooter")
+Delay = 1.6
+
+[node name="WestChaser" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(90, 85)
+script = ExtResource("5_point")
+Enemy = ExtResource("9_chaser")
+Delay = 2.0
+
+[node name="SouthChaser" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(365, 225)
+script = ExtResource("5_point")
+Enemy = ExtResource("9_chaser")
+Delay = 2.4
+
+[node name="Wave2" type="Node2D" parent="Waves"]
+
+[node name="NorthCharger" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(535, 110)
+script = ExtResource("5_point")
+Enemy = ExtResource("6_charger")
+
+[node name="SouthCharger" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(400, 270)
+script = ExtResource("5_point")
+Enemy = ExtResource("6_charger")
+
+[node name="NorthFlanker" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(375, 60)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+
+[node name="EastFlanker" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(550, 55)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+
+[node name="SouthFlanker" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(550, 230)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+
+[node name="SouthWestFlanker" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(440, 310)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+
+[node name="WestNorthFlanker" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(90, 85)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+
+[node name="WestSouthFlanker" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(90, 270)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+
+[node name="NorthShooter" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(410, 140)
+script = ExtResource("5_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="SouthShooter" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(365, 310)
+script = ExtResource("5_point")
+Enemy = ExtResource("8_shooter")
+
+[node name="NorthReinforcement" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(375, 130)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+Delay = 0.8
+
+[node name="SouthReinforcement" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(365, 225)
+script = ExtResource("5_point")
+Enemy = ExtResource("7_flanker")
+Delay = 1.2
+
+[node name="EastNorthShooter" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(470, 55)
+script = ExtResource("5_point")
+Enemy = ExtResource("8_shooter")
+Delay = 2.0
+
+[node name="EastSouthShooter" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(550, 310)
+script = ExtResource("5_point")
+Enemy = ExtResource("8_shooter")
+Delay = 2.4
+
+[node name="WestHealth" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(90, 190)
+script = ExtResource("5_point")
+Pickup = ExtResource("11_health")
+
+[node name="SouthArmor" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(425, 280)
+script = ExtResource("5_point")
+Pickup = ExtResource("12_armor")
+
+[editable path="WestChannel"]
+[editable path="EastChannel"]
+[editable path="WestBankTop"]
+[editable path="EastBankTop"]
+[editable path="WestBankBottom"]
+[editable path="EastBankBottom"]
+[editable path="WestBank"]
+[editable path="EastBank"]

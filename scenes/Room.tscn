@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://src/Room.cs" id="1_room"]
+[ext_resource type="PackedScene" path="res://scenes/Door.tscn" id="2_door"]
+[ext_resource type="Texture2D" path="res://assets/sprites/0x72/env/floor_1.png" id="3_floor"]
+[ext_resource type="Texture2D" path="res://assets/sprites/0x72/env/wall_mid.png" id="4_wall"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h"]
+size = Vector2(640, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v"]
+size = Vector2(16, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r"]
+size = Vector2(16, 156)
+
+[node name="Room" type="Node2D" groups=["room"]]
+script = ExtResource("1_room")
+
+[node name="Floor" type="Polygon2D" parent="."]
+z_index = -3
+texture_repeat = 2
+texture = ExtResource("3_floor")
+texture_scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+z_index = 1
+collision_layer = 1
+collision_mask = 0
+
+[node name="TopVisual" type="Polygon2D" parent="Walls"]
+position = Vector2(320, 8)
+texture_repeat = 2
+texture = ExtResource("4_wall")
+texture_scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-320, -8, 320, -8, 320, 8, -320, 8)
+
+[node name="Top" type="CollisionShape2D" parent="Walls"]
+position = Vector2(320, 8)
+shape = SubResource("RectangleShape2D_h")
+
+[node name="BottomVisual" type="Polygon2D" parent="Walls"]
+position = Vector2(320, 352)
+texture_repeat = 2
+texture = ExtResource("4_wall")
+texture_scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-320, -8, 320, -8, 320, 8, -320, 8)
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2(320, 352)
+shape = SubResource("RectangleShape2D_h")
+
+[node name="LeftVisual" type="Polygon2D" parent="Walls"]
+position = Vector2(8, 180)
+texture_repeat = 2
+texture = ExtResource("4_wall")
+texture_scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-8, -180, 8, -180, 8, 180, -8, 180)
+
+[node name="Left" type="CollisionShape2D" parent="Walls"]
+position = Vector2(8, 180)
+shape = SubResource("RectangleShape2D_v")
+
+[node name="RightUpperVisual" type="Polygon2D" parent="Walls"]
+position = Vector2(632, 78)
+texture_repeat = 2
+texture = ExtResource("4_wall")
+texture_scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-8, -78, 8, -78, 8, 78, -8, 78)
+
+[node name="RightUpper" type="CollisionShape2D" parent="Walls"]
+position = Vector2(632, 78)
+shape = SubResource("RectangleShape2D_r")
+
+[node name="RightLowerVisual" type="Polygon2D" parent="Walls"]
+position = Vector2(632, 282)
+texture_repeat = 2
+texture = ExtResource("4_wall")
+texture_scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-8, -78, 8, -78, 8, 78, -8, 78)
+
+[node name="RightLower" type="CollisionShape2D" parent="Walls"]
+position = Vector2(632, 282)
+shape = SubResource("RectangleShape2D_r")
+
+[node name="EntryPoint" type="Marker2D" parent="."]
+position = Vector2(60, 180)
+
+[node name="Door" parent="." instance=ExtResource("2_door")]
+position = Vector2(632, 180)
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Waves" type="Node2D" parent="."]

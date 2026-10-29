@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://src/Player.cs" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/Weapon.tscn" id="2_weapon"]
+[ext_resource type="Script" path="res://src/HealthComponent.cs" id="3_health"]
+[ext_resource type="PackedScene" path="res://scenes/WeaponPickup.tscn" id="4_weapon_pickup"]
+[ext_resource type="SpriteFrames" path="res://assets/sprites/0x72/knight_m.tres" id="9_frames"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(12, 16)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_player")
+StartingWeaponScene = ExtResource("2_weapon")
+WeaponPickupScene = ExtResource("4_weapon_pickup")
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("9_frames")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="WeaponPivot" type="Node2D" parent="."]
+position = Vector2(0, -9)
+
+[node name="Weapon" parent="WeaponPivot" instance=ExtResource("2_weapon")]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_health")
+MaxHealth = 6
+InvulnerableSeconds = 0.6

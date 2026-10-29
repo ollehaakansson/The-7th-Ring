@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/BoilingBlood.tscn" id="1_blood"]
+[ext_resource type="Script" path="res://src/RiverArt.cs" id="2_art"]
+
+[node name="River" instance=ExtResource("1_blood")]
+z_index = -2
+
+[node name="Visual" parent="." index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="." index="1"]
+disabled = true
+
+[node name="Water1" type="CollisionPolygon2D" parent="."]
+
+[node name="Water2" type="CollisionPolygon2D" parent="."]
+
+[node name="Water3" type="CollisionPolygon2D" parent="."]
+
+[node name="Path" type="Line2D" parent="."]
+points = PackedVector2Array(0, -180, 24, -90, -16, 0, 20, 90, 0, 180)
+width = 80.0
+default_color = Color(1, 1, 1, 0)
+
+[node name="Art" type="Node2D" parent="."]
+script = ExtResource("2_art")

@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://bjftdtjcy34gv"]
+
+[ext_resource type="AudioStreamMP3" path="res://music/At Doom's Gate.mp3" id="room_music"]
+[ext_resource type="PackedScene" path="res://scenes/Room.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://scenes/Obstacle.tscn" id="2_obstacle"]
+[ext_resource type="PackedScene" path="res://scenes/River.tscn" id="4_river"]
+[ext_resource type="PackedScene" path="res://scenes/Bridge.tscn" id="5_bridge"]
+[ext_resource type="Script" path="res://src/SpawnPoint.cs" id="ford_point"]
+[ext_resource type="PackedScene" path="res://scenes/Chaser.tscn" id="ford_chaser"]
+
+[node name="Room" unique_id=249452310 instance=ExtResource("1_base")]
+Music = ExtResource("room_music")
+MusicStartSeconds = 37.0
+
+[node name="WestStoneNorth" parent="Obstacles" index="0" unique_id=1381137541 instance=ExtResource("2_obstacle")]
+position = Vector2(158, 102)
+Size = Vector2(40, 40)
+
+[node name="WestStoneSouth" parent="Obstacles" index="1" unique_id=20833839 instance=ExtResource("2_obstacle")]
+position = Vector2(187, 257)
+Size = Vector2(40, 48)
+
+[node name="EastStoneNorth" parent="Obstacles" index="2" unique_id=1434557293 instance=ExtResource("2_obstacle")]
+position = Vector2(480, 95)
+Size = Vector2(56, 32)
+
+[node name="EastStoneSouth" parent="Obstacles" index="3" unique_id=867644465 instance=ExtResource("2_obstacle")]
+position = Vector2(520, 265)
+Size = Vector2(32, 56)
+
+[node name="River" parent="." index="7" unique_id=36302412 instance=ExtResource("4_river")]
+position = Vector2(32, 23)
+
+[node name="Water1" parent="River" index="2"]
+polygon = PackedVector2Array(415, 181, 414.00168, 193.19646, 411.03323, 205.0682, 406.17377, 216.2992, 399.55258, 226.59045, 391.34598, 235.668, 381.77243, 243.29015, 378.737, 245.22185, 354.45374, 259.86887, 360.50018, 267.54245, 366.41003, 278.25803, 370.49863, 289.79202, 372.6572, 301.83737, 372.82822, 314.07343, 371.0071, 326.1744, 367.24243, 337.81815, 361.63434, 348.6947, 360.2327, 350.57962, 359.7859, 351.8915, 354.00934, 362.67953, 346.55533, 372.38458, 337.62234, 380.74826, 327.44812, 387.54794, 316.30362, 392.6026, 304.48544, 395.77765, 292.30826, 396.9886, 280.09625, 396.20316, 277.28192, 395.73474, 234.2819, 387.73474, 222.47382, 384.52243, 211.34529, 379.43265, 201.1926, 372.60092, 192.28601, 364.20908, 184.86266, 354.48056, 179.12016, 343.67438, 175.21141, 332.0782, 173.24043, 320.00073, 173.25974, 307.7635, 175.2688, 295.6923, 175.38644, 295.34683, 172.50136, 287.20798, 170.3428, 275.16263, 170.17178, 262.92657, 171.99287, 250.8256, 175.75757, 239.18184, 181.36565, 228.30528, 182.20471, 226.99083, 213.54565, 179, 415, 179)
+
+[node name="Water2" parent="River" index="3"]
+polygon = PackedVector2Array(240.8744, -92.97657, 280.87442, -91.97657, 293.0421, -90.67374, 304.83597, -87.40954, 315.942, -82.27089, 326.06458, -75.39458, 334.93417, -66.96367, 342.31467, -57.20262, 348.0096, -46.371292, 351.86737, -34.758034, 353.78522, -22.672012, 353.71213, -10.43499, 353.70975, -10.407959, 350.70975, 23.592041, 348.64328, 35.653534, 344.64288, 47.21843, 343.9623, 48.47503, 388.1665, 85.51096, 396.87418, 94.10901, 404.06772, 104.00864, 409.55566, 114.94631, 413.19186, 126.63082, 414.35724, 135, 213.66917, 135, 180.83351, 107.48904, 172.12582, 98.89099, 164.93227, 88.99136, 159.44434, 78.05369, 155.80814, 66.36918, 154.12045, 54.24887, 154.42622, 42.015465, 156.71733, 29.994598, 160.93275, 18.50634, 166.96028, 7.856514, 168.2792, 6.2200394, 166.13264, -0.24196625, 164.21478, -12.327988, 164.28789, -24.56501, 166.34998, -36.62725, 170.34618, -48.193604, 176.1701, -58.956123, 183.66669, -68.6283, 192.63638, -76.95265, 202.84036, -83.70754, 214.007, -88.71316, 225.83902, -91.83623, 238.0214, -92.99362)
+
+[node name="Path" parent="River" index="5"]
+position = Vector2(-36, 5)
+points = PackedVector2Array(275, -23, 315, -22, 312, 12, 265, 45, 376, 138, 376, 176, 313, 214, 281, 263, 334, 304, 284, 309, 327, 317)
+width = 150.0
+
+[node name="Art" parent="River" index="6"]
+scale = Vector2(2, 2)
+
+[node name="Bridge" parent="." index="8" unique_id=1901106353 instance=ExtResource("5_bridge")]
+position = Vector2(345, 180)
+Size = Vector2(230, 44)
+
+[node name="Wave1" type="Node2D" parent="Waves"]
+
+[node name="Chaser1" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(540, 90)
+script = ExtResource("ford_point")
+Enemy = ExtResource("ford_chaser")
+
+[node name="Chaser2" type="Marker2D" parent="Waves/Wave1"]
+position = Vector2(540, 270)
+script = ExtResource("ford_point")
+Enemy = ExtResource("ford_chaser")
+Delay = 0.4
+
+[node name="Wave2" type="Node2D" parent="Waves"]
+
+[node name="Chaser1" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(90, 50)
+script = ExtResource("ford_point")
+Enemy = ExtResource("ford_chaser")
+
+[node name="Chaser2" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(90, 310)
+script = ExtResource("ford_point")
+Enemy = ExtResource("ford_chaser")
+Delay = 0.4
+
+[node name="Chaser3" type="Marker2D" parent="Waves/Wave2"]
+position = Vector2(200, 40)
+script = ExtResource("ford_point")
+Enemy = ExtResource("ford_chaser")
+Delay = 0.8
+
+[node name="Wave3" type="Node2D" parent="Waves"]
+
+[node name="Chaser1" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(560, 70)
+script = ExtResource("ford_point")
+Enemy = ExtResource("ford_chaser")
+
+[node name="Chaser2" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(560, 290)
+script = ExtResource("ford_point")
+Enemy = ExtResource("ford_chaser")
+Delay = 0.3
+
+[node name="Chaser3" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(600, 180)
+script = ExtResource("ford_point")
+Enemy = ExtResource("ford_chaser")
+Delay = 0.6
+
+[node name="Chaser4" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(90, 50)
+script = ExtResource("ford_point")
+Enemy = ExtResource("ford_chaser")
+Delay = 1.2
+
+[node name="Chaser5" type="Marker2D" parent="Waves/Wave3"]
+position = Vector2(90, 310)
+script = ExtResource("ford_point")
+Enemy = ExtResource("ford_chaser")
+Delay = 1.5
+
+[editable path="River"]

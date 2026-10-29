@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://src/GameShell.cs" id="1"]
+[ext_resource type="Shader" path="res://assets/shaders/menu_blur.gdshader" id="2"]
+[ext_resource type="AudioStreamMP3" path="res://music/Rip & Tear.mp3" id="3"]
+
+[sub_resource type="ShaderMaterial" id="blur"]
+shader = ExtResource("2")
+
+[sub_resource type="StyleBoxFlat" id="normal"]
+bg_color = Color(0.09, 0.055, 0.05, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.45, 0.25, 0.18, 1)
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="hover"]
+bg_color = Color(0.27, 0.07, 0.055, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.85, 0.47, 0.25, 1)
+
+[sub_resource type="StyleBoxFlat" id="focus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.85, 0.47, 0.25, 1)
+
+[node name="GameShell" type="Node"]
+process_mode = 3
+script = ExtResource("1")
+
+[node name="HomeMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3")
+volume_db = -8.0
+bus = &"Music"
+
+[node name="Menu" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Blur" type="ColorRect" parent="Menu"]
+material = SubResource("blur")
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Center" type="CenterContainer" parent="Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/Center"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Menu/Center/Buttons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.84, 0.68, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.02, 0.02, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 36
+text = "THE 7TH RING"
+horizontal_alignment = 1
+
+[node name="Primary" type="Button" parent="Menu/Center/Buttons"]
+custom_minimum_size = Vector2(260, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.89, 0.78, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("normal")
+theme_override_styles/hover = SubResource("hover")
+theme_override_styles/pressed = SubResource("hover")
+theme_override_styles/focus = SubResource("focus")
+text = "PLAY"
+
+[node name="Quit" type="Button" parent="Menu/Center/Buttons"]
+custom_minimum_size = Vector2(260, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.89, 0.78, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("normal")
+theme_override_styles/hover = SubResource("hover")
+theme_override_styles/pressed = SubResource("hover")
+theme_override_styles/focus = SubResource("focus")
+text = "QUIT"

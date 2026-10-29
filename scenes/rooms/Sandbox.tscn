@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Room.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://scenes/Obstacle.tscn" id="2_obstacle"]
+[ext_resource type="PackedScene" path="res://scenes/Chaser.tscn" id="3_chaser"]
+[ext_resource type="PackedScene" path="res://scenes/HealthPickup.tscn" id="4_health"]
+[ext_resource type="PackedScene" path="res://scenes/ArmorPickup.tscn" id="5_armor"]
+[ext_resource type="PackedScene" path="res://scenes/preview/BloodPool.tscn" id="6_blood"]
+[ext_resource type="PackedScene" path="res://scenes/preview/FirePit.tscn" id="7_fire"]
+[ext_resource type="PackedScene" path="res://scenes/ShotgunPickup.tscn" id="8_shotgun"]
+[ext_resource type="PackedScene" path="res://scenes/BazookaPickup.tscn" id="9_bazooka"]
+[ext_resource type="PackedScene" path="res://scenes/ExplosiveBarrel.tscn" id="10_barrel"]
+[ext_resource type="PackedScene" path="res://scenes/Nukage.tscn" id="11_nukage"]
+[ext_resource type="PackedScene" path="res://scenes/Geyser.tscn" id="12_geyser"]
+
+[node name="Room" instance=ExtResource("1_base")]
+
+[node name="Divider" parent="Obstacles" index="0" instance=ExtResource("2_obstacle")]
+position = Vector2(300, 180)
+Size = Vector2(24, 200)
+
+[node name="Pillar" parent="Obstacles" index="1" instance=ExtResource("2_obstacle")]
+position = Vector2(460, 90)
+Size = Vector2(40, 40)
+
+[node name="Chaser" parent="Enemies" index="0" instance=ExtResource("3_chaser")]
+position = Vector2(540, 180)
+
+[node name="HealthPickup" parent="." instance=ExtResource("4_health")]
+position = Vector2(160, 250)
+
+[node name="ArmorPickup" parent="." instance=ExtResource("5_armor")]
+position = Vector2(200, 250)
+
+[node name="BoilingBlood" parent="." instance=ExtResource("6_blood")]
+position = Vector2(200, 90)
+scale = Vector2(1.4, 1.3)
+
+[node name="BloodStrip" parent="." instance=ExtResource("6_blood")]
+position = Vector2(170, 320)
+scale = Vector2(3, 0.65)
+
+[node name="RainOfFire" parent="." instance=ExtResource("7_fire")]
+position = Vector2(420, 270)
+
+[node name="FireStrip" parent="." instance=ExtResource("7_fire")]
+position = Vector2(590, 270)
+scale = Vector2(0.65, 1.4)
+
+[node name="ShotgunPickup" parent="." instance=ExtResource("8_shotgun")]
+position = Vector2(100, 140)
+
+[node name="BazookaPickup" parent="." instance=ExtResource("9_bazooka")]
+position = Vector2(100, 220)
+
+[node name="ExplosiveBarrel" parent="." instance=ExtResource("10_barrel")]
+position = Vector2(360, 90)
+
+[node name="Nukage" parent="." instance=ExtResource("11_nukage")]
+position = Vector2(430, 175)
+scale = Vector2(1.3, 1.1)
+
+[node name="Geyser" parent="." instance=ExtResource("12_geyser")]
+position = Vector2(245, 262)
+scale = Vector2(0.7, 0.7)

@@ -1,0 +1,2 @@
+blood1.png and lava1.png are flats from Freedoom 0.13.0 (https://freedoom.github.io),
+scaled to 16x16. BSD 3-clause - see assets/palettes/LICENSE-freedoom.txt.

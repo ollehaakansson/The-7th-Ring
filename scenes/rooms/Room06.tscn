@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Room.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://scenes/Charger.tscn" id="2_charger"]
+[ext_resource type="PackedScene" path="res://scenes/Flanker.tscn" id="3_flanker"]
+[ext_resource type="PackedScene" path="res://scenes/Obstacle.tscn" id="4_obstacle"]
+[ext_resource type="PackedScene" path="res://scenes/preview/FirePit.tscn" id="5_fire"]
+[ext_resource type="PackedScene" path="res://scenes/ExplosiveBarrel.tscn" id="6_barrel"]
+[ext_resource type="PackedScene" path="res://scenes/BazookaPickup.tscn" id="7_bazooka"]
+[ext_resource type="PackedScene" path="res://scenes/HealthPickup.tscn" id="8_health"]
+
+[ext_resource type="PackedScene" path="res://scenes/Geyser.tscn" id="9_geyser"]
+
+[node name="Room" instance=ExtResource("1_base")]
+
+[node name="Charger1" parent="Enemies" index="0" instance=ExtResource("2_charger")]
+position = Vector2(535, 55)
+
+[node name="Charger2" parent="Enemies" index="1" instance=ExtResource("2_charger")]
+position = Vector2(535, 145)
+
+[node name="Charger3" parent="Enemies" index="2" instance=ExtResource("2_charger")]
+position = Vector2(535, 235)
+
+[node name="Charger4" parent="Enemies" index="3" instance=ExtResource("2_charger")]
+position = Vector2(535, 315)
+
+[node name="Flanker1" parent="Enemies" index="4" instance=ExtResource("3_flanker")]
+position = Vector2(455, 105)
+
+[node name="Flanker2" parent="Enemies" index="5" instance=ExtResource("3_flanker")]
+position = Vector2(455, 255)
+
+[node name="NorthBunker" parent="Obstacles" index="0" instance=ExtResource("4_obstacle")]
+position = Vector2(235, 100)
+Size = Vector2(28, 150)
+
+[node name="SouthBunker" parent="Obstacles" index="1" instance=ExtResource("4_obstacle")]
+position = Vector2(340, 260)
+Size = Vector2(28, 150)
+
+[node name="CenterWall" parent="Obstacles" index="2" instance=ExtResource("4_obstacle")]
+position = Vector2(445, 100)
+Size = Vector2(28, 150)
+
+[node name="ExitWall" parent="Obstacles" index="3" instance=ExtResource("4_obstacle")]
+position = Vector2(515, 275)
+Size = Vector2(28, 110)
+
+[node name="NorthGeyser" parent="." instance=ExtResource("9_geyser")]
+position = Vector2(285, 55)
+scale = Vector2(0.7, 0.7)
+
+[node name="SouthGeyser" parent="." instance=ExtResource("9_geyser")]
+position = Vector2(395, 305)
+scale = Vector2(0.7, 0.7)
+
+[node name="CenterFire" parent="." instance=ExtResource("5_fire")]
+position = Vector2(370, 180)
+scale = Vector2(0.7, 0.8)
+
+[node name="ExplosiveBarrel" parent="." instance=ExtResource("6_barrel")]
+position = Vector2(290, 180)
+
+[node name="EastBarrel" parent="." instance=ExtResource("6_barrel")]
+position = Vector2(575, 180)
+
+[node name="BazookaPickup" parent="." instance=ExtResource("7_bazooka")]
+position = Vector2(105, 110)
+
+[node name="HealthPickup" parent="." instance=ExtResource("8_health")]
+position = Vector2(105, 250)

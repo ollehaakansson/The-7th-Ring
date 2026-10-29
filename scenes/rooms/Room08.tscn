@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://21mdakppykwy"]
+
+[ext_resource type="PackedScene" path="res://scenes/Room.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://tosvjs1snj7" path="res://src/SpawnPoint.cs" id="2_point"]
+[ext_resource type="PackedScene" path="res://scenes/Chaser.tscn" id="3_chaser"]
+[ext_resource type="PackedScene" path="res://scenes/Shooter.tscn" id="4_shooter"]
+[ext_resource type="PackedScene" path="res://scenes/Flanker.tscn" id="5_flanker"]
+[ext_resource type="PackedScene" path="res://scenes/Charger.tscn" id="6_charger"]
+[ext_resource type="PackedScene" path="res://scenes/Obstacle.tscn" id="7_obstacle"]
+[ext_resource type="PackedScene" path="res://scenes/preview/BloodPool.tscn" id="8_blood"]
+[ext_resource type="PackedScene" path="res://scenes/preview/FirePit.tscn" id="9_fire"]
+[ext_resource type="PackedScene" path="res://scenes/ExplosiveBarrel.tscn" id="10_barrel"]
+
+[node name="Room" unique_id=959422915 instance=ExtResource("1_base")]
+
+[node name="PillarNorth" parent="Obstacles" index="0" unique_id=792743803 instance=ExtResource("7_obstacle")]
+position = Vector2(170, 115)
+Size = Vector2(90, 26)
+
+[node name="PillarSouth" parent="Obstacles" index="1" unique_id=265778814 instance=ExtResource("7_obstacle")]
+position = Vector2(250, 260)
+Size = Vector2(26, 90)
+
+[node name="Spine" parent="Obstacles" index="2" unique_id=1193785930 instance=ExtResource("7_obstacle")]
+position = Vector2(350, 100)
+Size = Vector2(26, 90)
+
+[node name="EastWall" parent="Obstacles" index="3" unique_id=111388345 instance=ExtResource("7_obstacle")]
+position = Vector2(465, 275)
+Size = Vector2(110, 26)
+
+[node name="CenterBlock" parent="Obstacles" index="4" unique_id=1310724333 instance=ExtResource("7_obstacle")]
+position = Vector2(170, 250)
+Size = Vector2(46, 46)
+
+[node name="Wave1" type="Node2D" parent="Waves" index="0" unique_id=582286094]
+
+[node name="North" type="Marker2D" parent="Waves/Wave1" index="0" unique_id=1555465694]
+position = Vector2(390, 80)
+script = ExtResource("2_point")
+Enemy = ExtResource("3_chaser")
+
+[node name="South" type="Marker2D" parent="Waves/Wave1" index="1" unique_id=188608692]
+position = Vector2(390, 280)
+script = ExtResource("2_point")
+Enemy = ExtResource("3_chaser")
+
+[node name="East" type="Marker2D" parent="Waves/Wave1" index="2" unique_id=821896898]
+position = Vector2(524, 123)
+script = ExtResource("2_point")
+Enemy = ExtResource("3_chaser")
+
+[node name="EastSouth" type="Marker2D" parent="Waves/Wave1" index="3" unique_id=540696613]
+position = Vector2(594, 230)
+script = ExtResource("2_point")
+Enemy = ExtResource("3_chaser")
+
+[node name="Wave2" type="Node2D" parent="Waves" index="1" unique_id=1487206965]
+
+[node name="East" type="Marker2D" parent="Waves/Wave2" index="0" unique_id=1055860041]
+position = Vector2(560, 90)
+script = ExtResource("2_point")
+Enemy = ExtResource("4_shooter")
+
+[node name="North" type="Marker2D" parent="Waves/Wave2" index="1" unique_id=252178940]
+position = Vector2(395, 75)
+script = ExtResource("2_point")
+Enemy = ExtResource("5_flanker")
+
+[node name="South" type="Marker2D" parent="Waves/Wave2" index="2" unique_id=665646943]
+position = Vector2(395, 285)
+script = ExtResource("2_point")
+Enemy = ExtResource("5_flanker")
+
+[node name="EastSouth" type="Marker2D" parent="Waves/Wave2" index="3" unique_id=256335116]
+position = Vector2(456, 236)
+script = ExtResource("2_point")
+Enemy = ExtResource("4_shooter")
+
+[node name="Center" type="Marker2D" parent="Waves/Wave2" index="4" unique_id=1638768454]
+position = Vector2(450, 180)
+script = ExtResource("2_point")
+Enemy = ExtResource("5_flanker")
+
+[node name="Wave3" type="Node2D" parent="Waves" index="2" unique_id=925516638]
+
+[node name="East" type="Marker2D" parent="Waves/Wave3" index="0" unique_id=938321513]
+position = Vector2(611, 138)
+script = ExtResource("2_point")
+Enemy = ExtResource("6_charger")
+
+[node name="North" type="Marker2D" parent="Waves/Wave3" index="1" unique_id=453964618]
+position = Vector2(400, 80)
+script = ExtResource("2_point")
+Enemy = ExtResource("4_shooter")
+
+[node name="South" type="Marker2D" parent="Waves/Wave3" index="2" unique_id=259637942]
+position = Vector2(395, 285)
+script = ExtResource("2_point")
+Enemy = ExtResource("5_flanker")
+
+[node name="Center" type="Marker2D" parent="Waves/Wave3" index="3" unique_id=1759450728]
+position = Vector2(450, 180)
+script = ExtResource("2_point")
+Enemy = ExtResource("6_charger")
+
+[node name="TopLava" parent="." index="7" unique_id=1324621180 instance=ExtResource("8_blood")]
+position = Vector2(320, 38.000004)
+scale = Vector2(8.4, 0.84999967)
+
+[node name="BottomLava" parent="." index="8" unique_id=2020549335 instance=ExtResource("8_blood")]
+position = Vector2(320, 322)
+scale = Vector2(8.4, 0.8900012)
+
+[node name="NorthToothWest" parent="." index="9" unique_id=1148014252 instance=ExtResource("8_blood")]
+position = Vector2(260, 103.00001)
+scale = Vector2(0.65, 1.8)
+
+[node name="SouthTooth" parent="." index="10" unique_id=511176857 instance=ExtResource("8_blood")]
+position = Vector2(330, 257)
+scale = Vector2(0.65, 1.8)
+
+[node name="NorthToothEast" parent="." index="11" unique_id=2034292368 instance=ExtResource("8_blood")]
+position = Vector2(435, 102.00001)
+scale = Vector2(0.65, 1.8)
+
+[node name="SouthToothEast" parent="." index="12" unique_id=1700454975 instance=ExtResource("8_blood")]
+position = Vector2(545, 256)
+scale = Vector2(0.65, 1.8)
+
+[node name="NorthFire" parent="." index="13" unique_id=1780751706 instance=ExtResource("9_fire")]
+position = Vector2(170, 180)
+scale = Vector2(1.3, 1)
+
+[node name="SouthFire" parent="." index="14" unique_id=1839650973 instance=ExtResource("9_fire")]
+position = Vector2(505, 180)
+scale = Vector2(1.3, 1)
+
+[node name="CenterBarrel" parent="." index="15" unique_id=133524812 instance=ExtResource("10_barrel")]
+position = Vector2(300, 105)
+
+[node name="NorthBarrel" parent="." index="16" unique_id=126457837 instance=ExtResource("10_barrel")]
+position = Vector2(485, 105)
+
+[node name="SouthBarrel" parent="." index="17" unique_id=373635699 instance=ExtResource("10_barrel")]
+position = Vector2(565, 135)

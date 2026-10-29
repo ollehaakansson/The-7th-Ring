@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/BoilingBlood.tscn" id="1_blood"]
+[ext_resource type="Script" path="res://src/PoolArt.cs" id="2_art"]
+
+[node name="BloodPool" instance=ExtResource("1_blood")]
+
+[node name="Visual" parent="." index="0"]
+visible = false
+
+[node name="Art" type="Node2D" parent="."]
+script = ExtResource("2_art")

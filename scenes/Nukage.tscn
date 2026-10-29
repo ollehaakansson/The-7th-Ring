@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Hazard.tscn" id="1_hazard"]
+[ext_resource type="Script" path="res://src/PoolArt.cs" id="2_art"]
+
+[node name="Nukage" instance=ExtResource("1_hazard")]
+DamageInterval = 1.0
+
+[node name="Visual" parent="." index="0"]
+visible = false
+
+[node name="Art" type="Node2D" parent="."]
+script = ExtResource("2_art")
+Rim = Color(0.0902, 0.2, 0.0588, 1)
+Surface = Array[Color]([Color(0.1529, 0.3255, 0.1059, 1), Color(0.2157, 0.451, 0.1686, 1), Color(0.2941, 0.6235, 0.2471, 1)])
+Bubble = Color(0.4039, 0.8745, 0.3725, 1)
+Shine = Color(0.4667, 1, 0.4353, 1)
+Hollow = Color(0.1216, 0.2627, 0.0902, 1)
+Steam = Array[Color]([Color(0.4667, 1, 0.4353, 1), Color(0.3255, 0.6863, 0.2784, 1), Color(0.1843, 0.3882, 0.1373, 1)])

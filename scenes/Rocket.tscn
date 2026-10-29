@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/Bullet.cs" id="1_bullet"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rocket"]
+radius = 4.0
+
+[node name="Rocket" type="Area2D"]
+collision_layer = 8
+collision_mask = 193
+script = ExtResource("1_bullet")
+Speed = 360.0
+Lifetime = 3.0
+Damage = 8
+Knockback = 45.0
+ExplosionRadius = 55.0
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(1, 0.3, 0.08, 1)
+polygon = PackedVector2Array(-5, -3, 5, -3, 7, 0, 5, 3, -5, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rocket")

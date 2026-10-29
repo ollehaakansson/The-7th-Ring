@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfo2l34j7suok"
+path="res://.godot/imported/The Stench.mp3-ce8039c1a3b96673320012c0cfee6fca.mp3str"
+
+[deps]
+
+source_file="res://music/The Stench.mp3"
+dest_files=["res://.godot/imported/The Stench.mp3-ce8039c1a3b96673320012c0cfee6fca.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

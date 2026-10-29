@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3n7t5sw810j7"
+path="res://.godot/imported/III. Dakhma.mp3-65d1a4c35d3fb3f07f0fe16092776afe.mp3str"
+
+[deps]
+
+source_file="res://music/III. Dakhma.mp3"
+dest_files=["res://.godot/imported/III. Dakhma.mp3-65d1a4c35d3fb3f07f0fe16092776afe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

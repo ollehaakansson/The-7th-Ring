@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/Hazard.cs" id="1_hazard"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hazard"]
+size = Vector2(72, 48)
+
+[node name="Hazard" type="Area2D"]
+z_index = -1
+collision_layer = 0
+collision_mask = 70
+script = ExtResource("1_hazard")
+
+[node name="Visual" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-36, -24, 36, -24, 36, 24, -36, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hazard")

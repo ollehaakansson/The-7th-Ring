@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bnh7brad73i8n"
+path="res://.godot/imported/Rust, Dust & Guts.mp3-cad0ae741aedd5ba6a4edc19a9f7d9b2.mp3str"
+
+[deps]
+
+source_file="res://music/Rust, Dust & Guts.mp3"
+dest_files=["res://.godot/imported/Rust, Dust & Guts.mp3-cad0ae741aedd5ba6a4edc19a9f7d9b2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

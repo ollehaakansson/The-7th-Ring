@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dxkbrr55v88h3"]
+
+[ext_resource type="PackedScene" path="res://scenes/Room.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://scenes/Chaser.tscn" id="2_chaser"]
+[ext_resource type="PackedScene" path="res://scenes/Obstacle.tscn" id="3_obstacle"]
+[ext_resource type="PackedScene" path="res://scenes/preview/BloodPool.tscn" id="4_blood"]
+[ext_resource type="PackedScene" path="res://scenes/ExplosiveBarrel.tscn" id="5_barrel"]
+
+[node name="Room" unique_id=761420825 instance=ExtResource("1_base")]
+
+[node name="NorthPillar" parent="Obstacles" index="0" unique_id=1051701278 instance=ExtResource("3_obstacle")]
+position = Vector2(275, 110)
+Size = Vector2(190, 26)
+
+[node name="SouthPillar" parent="Obstacles" index="1" unique_id=1428980226 instance=ExtResource("3_obstacle")]
+position = Vector2(400, 250)
+Size = Vector2(190, 26)
+
+[node name="EastBlock" parent="Obstacles" index="2" unique_id=555760409 instance=ExtResource("3_obstacle")]
+position = Vector2(514, 162)
+Size = Vector2(44, 44)
+
+[node name="Enemy1" parent="Enemies" index="0" unique_id=113731101 instance=ExtResource("2_chaser")]
+position = Vector2(394, 64)
+
+[node name="Enemy2" parent="Enemies" index="1" unique_id=951214290 instance=ExtResource("2_chaser")]
+position = Vector2(535, 105)
+
+[node name="Enemy3" parent="Enemies" index="2" unique_id=171502867 instance=ExtResource("2_chaser")]
+position = Vector2(420, 295)
+
+[node name="Enemy4" parent="Enemies" index="3" unique_id=1971429486 instance=ExtResource("2_chaser")]
+position = Vector2(545, 250)
+
+[node name="BoilingBlood" parent="." index="7" unique_id=332380084 instance=ExtResource("4_blood")]
+position = Vector2(149, 284)
+scale = Vector2(2.3200002, 1.38)
+
+[node name="NorthBlood" parent="." index="8" unique_id=551811677 instance=ExtResource("4_blood")]
+position = Vector2(460, 55)
+scale = Vector2(1.25, 0.75)
+
+[node name="ExplosiveBarrel" parent="." index="9" unique_id=1417186776 instance=ExtResource("5_barrel")]
+position = Vector2(435, 180)

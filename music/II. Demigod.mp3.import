@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chp0bx8iyfpn5"
+path="res://.godot/imported/II. Demigod.mp3-aa6adc0ae71e3ae4a2951cc9235cad84.mp3str"
+
+[deps]
+
+source_file="res://music/II. Demigod.mp3"
+dest_files=["res://.godot/imported/II. Demigod.mp3-aa6adc0ae71e3ae4a2951cc9235cad84.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://j8pv0sdaxyeg"
+path="res://.godot/imported/Vega Core.mp3-b42e24d6003df3ec7a51688671e10b8f.mp3str"
+
+[deps]
+
+source_file="res://music/Vega Core.mp3"
+dest_files=["res://.godot/imported/Vega Core.mp3-b42e24d6003df3ec7a51688671e10b8f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
